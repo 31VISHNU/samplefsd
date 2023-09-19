@@ -1,0 +1,201 @@
+class Stack<T> {
+    items: T[];
+  
+    constructor() {
+      this.items = [];
+    }
+  
+    push(value: T): void {
+      this.items.push(value);
+    }
+  
+    pop(): T | undefined {
+      if (this.isEmpty()) {
+        return undefined;
+      }
+      return this.items.pop();
+    }
+  
+    isEmpty(): boolean {
+      if(this.items.length === 0)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+  }
+const s = new Stack();
+s.push(5)
+s.push(6)
+console.log(s.isEmpty());
+console.log(`${s.items}`);
+const s2 = new Stack();
+s2.push('A')
+s2.push('B')
+s2.pop()
+console.log(`${s2.items}`);
+
+
+interface Book {
+    title: string;
+    author: string;
+    publisher: string;
+  }
+  
+  const books: Book[] = [
+    { title: "Something I never told u", author: "Bindra", publisher: "Pearson" },
+    { title: "PS", author: "Kalki", publisher: "Vikram" },
+    { title: "Something I wanted to tell u", author: "Bindra", publisher: "Pearson" },
+    { title: "It ends with us", author: "Collen Hover", publisher: "Pearson" }
+  ];
+  
+  books.sort((a, b) => a.author.localeCompare(b.author));
+  
+  console.log("List of Books sorted by author name in ascending order:");
+  books.forEach(book => {
+    console.log(`${book.title} by ${book.author} (published by ${book.publisher})`);
+  });
+  
+
+
+
+class Employee {
+  name: string;
+  basicPay: number;
+
+  constructor(name: string, basicPay: number) {
+    this.name = name;
+    this.basicPay = basicPay;
+  }
+
+  calculatePay(): number {
+    const tax = 0.1;
+    const medicalAllowance = 500;
+    const grossSalary = this.basicPay + medicalAllowance;
+    const netSalary = grossSalary - (grossSalary * tax);
+    return netSalary;
+  }
+}
+
+const employee1 = new Employee("Vishnu", 1000000);
+console.log(`Employee Name: ${employee1.name}`);
+console.log(`Basic Salary: ${employee1.basicPay}`);
+console.log(`Net Salary: ${employee1.calculatePay()}`);
+
+
+10.1)
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+  }
+
+  function decrement() {
+    setCount(count - 1);
+  }
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+}
+
+export default Counter;
+ 
+10.2)
+import { useState } from "react";
+
+const books = [
+  {
+    id: 1,
+    title: "Book 1",
+    author: "Author 1",
+    publisher: "Pearson",
+    release_year: 2020,
+    image_url: "book1.jpg",
+  },
+  {
+    id: 2,
+    title: "Book 2",
+    author: "Author 2",
+    publisher: "TMH",
+    release_year: 2021,
+    image_url: "book2.jpg",
+  },
+  {
+    id: 3,
+    title: "Book 3",
+    author: "Author 3",
+    publisher: "Pearson",
+    release_year: 2022,
+    image_url: "book3.jpg",
+  },
+];
+
+function BookList() {
+  const [yearFilter, setYearFilter] = useState("");
+  const [publisherFilter, setPublisherFilter] = useState("All");
+
+  const filteredBooks = books.filter((book) => {
+    if (yearFilter !== "" && book.release_year !== yearFilter) {
+      return false;
+    }
+    if (publisherFilter !== "All" && book.publisher !== publisherFilter) {
+      return false;
+    }
+    return true;
+  });
+
+  const publisherOptions = ["All", "Pearson", "TMH"];
+
+  return (
+    <div>
+      <h1>Book List</h1>
+      <div>
+        <label htmlFor="year-filter">Filter by Year:</label>
+        <input
+          id="year-filter"
+          type="text"
+          value={yearFilter}
+          onChange={(e) => setYearFilter(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="publisher-filter">Filter by Publisher:</label>
+        <select
+          id="publisher-filter"
+          value={publisherFilter}
+          onChange={(e) => setPublisherFilter(e.target.value)}
+        >
+          {publisherOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+      <ul>
+        {filteredBooks.map((book) => (
+          <li key={book.id}>
+            <img src={book.image_url} alt={book.title} />
+            <h2>{book.title}</h2>
+            <p>Author: {book.author}</p>
+            <p>Publisher: {book.publisher}</p>
+            <p>Release Year: {book.release_year}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default BookList;

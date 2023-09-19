@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Profile</title>
+<style>
+            .blink {
+                animation: blinker 1.5s linear infinite;
+                color: blue;
+                font-family: sans-serif;
+            }
+            @keyframes blinker {
+                50% {
+                    opacity: 0;
+                }
+            }
+	  .example { background-color: rgb(255, 122, 89); } 
+	  html {
+		height: 100%;
+		}
+	body{
+		background-image: linear-gradient(#FFFFFF, rgb(255, 122, 89));
+	}
+	.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.success {
+  color: green;
+}
+
+.success:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+        </style>
+    </head>    
+<body>
+<marquee class="blink">Contact details +916374390997, vishnushankar.jawaharlal_ai@mepcoeng.ac.in</marquee>
+<div class="example">
+<img src="profilepic.jfif" alt="aaa" width="350" height="250">
+<img src="Mepco_Schlenk_Engineering_College_logo.png" alt="bbb" width="350" height="250" align="right">
+<h1> Vishnu Sankar J (IIIrd Year)</h1>
+<h2> B. Tech Artificial Intelligence and Data Science </h2>
+<h3> Mepco Schlenk Engineering College, Sivakasi </h3>
+</div>
+<button class="btn success" onclick="window.location.href='areaofinterest.html';">Area of Intrest</button>
+<button class="btn success" onclick="window.location.href='AP.html';">Academic Performance</button>
+<button class="btn success" onclick="window.location.href='tc.html';">Technical Competency</button>
+</body>
+</html>

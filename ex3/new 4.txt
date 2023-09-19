@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      td {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid black;
+        bgcolor:"green"
+      }
+    </style>
+    <script>
+      let blankRow;
+      let blankCol;
+      let tiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""];
+  
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+  
+      function isValidMove(row, col) {
+        if (row === blankRow && Math.abs(col - blankCol) === 1) {
+          return true;
+        }
+        if (col === blankCol && Math.abs(row - blankRow) === 1) {
+          return true;
+        }
+        return false;
+      }
+  
+      function moveTile(row, col) {
+        if (isValidMove(row, col)) {
+          let index = row * 4 + col;
+          tiles[blankRow * 4 + blankCol] = tiles[index];
+          tiles[index] = "";
+          blankRow = row;
+          blankCol = col;
+          renderBoard();
+        }
+      }
+  
+      function renderBoard() {
+        let board = document.getElementById("board");
+        for (let i = 0; i < 4; i++) {
+          for (let j = 0; j < 4; j++) {
+            let index = i * 4 + j;
+            let tile = tiles[index];
+            if (tile === "") {
+              blankRow = i;
+              blankCol = j;
+            }
+            board.rows[i].cells[j].innerHTML = tile;
+            board.rows[i].cells[j].onclick = function() {
+              moveTile(i, j);
+            };
+          }
+        }
+      }
+  
+      window.onload = function() {
+        shuffleArray(tiles);
+        renderBoard();
+      };
+    </script>
+  </head>
+  <body>
+    <table id="board">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+     
+</tr>
+    </table>
+  </body>
+</html>

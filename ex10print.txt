@@ -1,0 +1,194 @@
+		Exercise - 10
+
+10.1)
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+  }
+
+  function decrement() {
+    setCount(count - 1);
+  }
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </div>
+  );
+}
+
+export default Counter;
+ 
+App.css
+button : { border-radius:50% }
+10.2)
+import { useState } from "react";
+
+const books = [
+  {
+    id: 1,
+    title: "Something I never told u",
+    author: "Bhindra",
+    publisher: "Pearson",
+    release_year: "2020",
+    image_url: "./Something-I-Never-Told-You-SDL595765186-1-df466.jpg",
+  },
+  {
+    id: 2,
+    title: "pONNIYIN SELVAN",
+    author: "Kalki",
+    publisher: "Vikram",
+    release_year: "2021",
+    image_url: "./91s48sH6xqL._AC_UF1000,1000_QL80_.jpg",
+  },
+  {
+    id: 3,
+    title: "Something i wanted to tell u",
+    author: "Bhindra",
+    publisher: "Pearson",
+    release_year: "2022",
+    image_url: "./41XVD5lLWXL._SX314_BO1,204,203,200_.jpg",
+  },
+];
+
+function Book() {
+  const [yearFilter, setYearFilter] = useState("");
+  const [publisherFilter, setPublisherFilter] = useState("All");
+
+  const filter = books.filter((book) => {
+    if (yearFilter !== "" && book.release_year !== yearFilter) {
+      return false;
+    }
+    if (publisherFilter !== "All" && book.publisher !== publisherFilter) {
+      return false;
+    }
+    return true;
+  });
+
+  const publisherOptions = ["All", "Pearson", "Vikram"];
+
+  return (
+    <div>
+      <div>
+        <label htmlFor="year"> Year:</label>
+        <input
+          id="year"
+          type="text"
+          value={yearFilter}
+          onChange={(e) => setYearFilter(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="publisher">Publisher:</label>
+        <select
+          id="publisher"
+          value={publisherFilter}
+          onChange={(e) => setPublisherFilter(e.target.value)}
+        >
+          {publisherOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+      <ul>
+        {filter.map((book) => (
+          <li key={book.id}>
+            <img src={book.image_url} alt={book.title} />
+            <h2>{book.title}</h2>
+            <p>Author: {book.author}</p>
+            <p>Publisher: {book.publisher}</p>
+            <p>Release Year: {book.release_year}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Book;
+			Exercise - 8
+8.1)
+import React from 'react'
+import images from "./imgImports";
+function App() {
+
+  const[int,setint] = React.useState(0);
+  const[data,] = React.useState(images)
+
+  const next = ()=>{
+
+    if(int>=(data.length-1)){
+      setint(0);
+    }
+    else{
+      setint(int+1);
+    }
+    
+  }
+  
+  const prev = ()=>{
+    
+    if(int<=0){
+      setint(data.length-1);
+    }
+    else{
+      setint(int-1);
+    }
+
+  }
+  
+  return (
+    <div align='center'>
+      <img src={`${images[int]['img']}`} alt={`${images[int]['name']}`}/>
+      <div>
+      <button onClick={next} > Click me for next image</button>
+      <button  onClick={prev} > Click me for prev image</button>
+      </div>
+    </div>
+  )
+}
+
+export default App
+
+8.2)
+import React, { useState } from "react";
+const data = [
+  { id: 1, name: "ABC" },
+  { id: 2, name: "VISHNU" },
+  { id: 3, name: "Raina" },
+  { id: 4, name: "Cricket" },
+  { id: 5, name: "Virat" },
+  { id: 6, name: "Virudhunagar" }
+];
+
+const SearchFilter = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredData = data.filter((item) =>
+    item.name.includes(searchTerm)
+  );
+
+  return (
+    <div class="input" align="center">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        align="center"
+      />
+      {filteredData.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  );
+};
+
+export default SearchFilter;

@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        .top{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .fo{
+            display: grid;
+            grid-template-columns: 1fr;
+            border-color: black;
+            border-style: solid;
+            width: 70%;
+            margin-left: 250px;
+            margin-top: -280px;
+        }
+
+        .r1{
+            margin-left: 300px;
+            margin-top: 20px;
+        }
+
+        th,td{
+            padding: 10px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="tit">
+            <h1 style="text-align:center;">Online Quiz</h1>
+        </div>
+    <div class="fo">
+    <form action="/sendanswer" method="post">
+        <h3>Online Quiz</h3>
+        <table>
+            <tr>
+                <td>1.Staff Hospitality</td>
+                <td>
+                    <input type="radio" name="hospitality_r" id="best_hr" value="Best">Best
+                    <input type="radio" name="hospitality_r" id="good_hr" value="Good">Good
+                    <input type="radio" name="hospitality_r" id="poor_hr" value="Poor">Poor
+                </td>
+            </tr>
+            <tr>
+                <td>2. Hygine</td>
+                <td>
+                    <input type="radio" name="hygine_r" id="best_hyr" value="Best">Best
+                    <input type="radio" name="hygine_r" id="good_hyr" value="Good">Good
+                    <input type="radio" name="hygine_r" id="poor_hyr" value="Poor">Poor
+                </td>
+            </tr>
+            <tr>
+                <td>3. Suggestion</td>
+                <td><textarea name="suggestion" id="suggestion" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>Phone number:</td>
+                <td><input type="text" name="phno" id=""></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/getResult" method="post">
+
+        <input type="submit" value="It is the best">
+    
+    </form>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration Form</title>
+        <style>
+            .top{
+                display: grid;
+                grid-template-rows: 1fr 1fr;
+            }
+
+            .fo{
+                display: grid;
+                grid-template-columns: 1fr;
+                border-color: black;
+                border-style: solid;
+                width: 70%;
+                margin-left: 250px;
+                margin-top: -280px;
+            }
+
+            .r1{
+                margin-left: 300px;
+                margin-top: 20px;
+            }
+
+            th,td{
+                padding: 10px;
+                
+            }
+
+        </style>
+    </head>
+    <body>
+            <div class="top">
+                <div class="tit">
+                    <h1 style="text-align:center;">EVENT REGISTRATION FORM</h1>
+                </div>
+                <div class="fo">
+                    <form class="r1">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Name : </th>
+                                    <td><input type="text" placeholder="Vishnu"></td>
+                                </tr>
+			   <tr>
+                                    <th>Degree: </th>
+                                    <td><select>
+                                        <option selected>B Tech</option>
+                                        <option>BE</option>
+                                        <option>MCA</option>
+                                        <option>MBA</option>
+                                        <option>B Arch</option>
+                                    </select></td>
+                                </tr>
+			   <tr>
+                                    <th>Department : </th>
+                                    <td><select>
+                                        <option selected>AIDS</option>
+                                        <option>IT</option>
+                                        <option>CSE</option>
+                                        <option>MECH</option>
+                                        <option>CIVIL</option>
+                                        <option>EEE</option>
+                                        <option>ECE</option>
+                                        <option>BME</option>
+				 <option>Bio Tech</option>
+                                    </select></td>
+                                </tr>
+                                 <tr>
+                                    <th>College : </th>
+                                    <td><input type="text" placeholder="Mepco Schlenk Engineering College"></td>
+                                </tr>
+                                <tr>
+                                    <th>Year: </th>
+                                    <td><input type="radio"><label>1st</label>
+                                        <input type="radio"><label>2nd</label>
+                                        <input type="radio"><label>3rd</label>
+				 <input type="radio"><label>4th</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Mail ID : </th>
+                                    <td><input type="email" placeholder="abc@gmail.com"></td>
+                                </tr>
+                                <tr>
+                                    <th>Phone No : </th>
+                                    <td><input type="tel" placeholder="1234567891"></td>
+                                </tr>
+                                <tr>
+                                    <th>Address : </th>
+                                    <td><textarea rows="10" cols="30"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th>Date Of Event : </th>
+                                    <td><input type="date"></td>
+                                </tr>
+                                <tr>
+                                    <th>No Of Events Interested : </th>
+                                    <td><input type="range" minlength="1" maxlength="3"></td>
+                                </tr>
+                                <tr>
+                                    <th>Event List : </th>
+                                    <td><input type="checkbox"><label>Paper Presentation</label>
+                                        <input type="checkbox"><label>Project Presentation</label>
+                                        <input type="checkbox"><label>Blind Coding</label>
+                                        <input type="checkbox"><label>Orangeomania</label>
+                                        <input type="checkbox"><label>Polymaths</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

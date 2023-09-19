@@ -1,0 +1,29 @@
+<html>
+<head>
+<body>
+    <h1>Pop UP</h1>    
+<script>
+     function openpopup() {
+      var popup_window=window.open("C:\Users\vishn\OneDrive\Desktop\Mepco\6th sem\Full Stack Development\ex3\ex3-2.html","_blank"," width=400, height=400");   
+      if(popup_window=='undefined'||popup_window==null)
+      {
+        return false;
+      }
+      else{
+        return true;
+      }
+}
+
+    if(openpopup()){
+    console.log('popup is allowed');
+}
+else{
+    window.alert('POP UP ')
+    window.open("C:\Users\vishn\OneDrive\Desktop\Mepco\6th sem\Full Stack Development\ex3\ex3-32.html","_self");
+    console.log('popup is blocked');
+}
+
+
+</script>
+</body>
+</html>

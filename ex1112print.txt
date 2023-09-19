@@ -1,0 +1,98 @@
+			Exercise - 11
+index.html:
+(dist folder)
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="Webpack Example Description"/><script src="./index.js"></script></head><body><div id="wrapper" style="height: 120px"><div class="panel"></div><div class="panel"></div><div class="panel"></div><h1>Login Form</h1><form><div class="container"><label>Username :</label> <input id="uname" placeholder="Enter Username" name="username" required> <label>Password :</label> <input type="password" id="pswd" placeholder="Enter Password" name="password" required> <button type="submit" onclick="validation()">Login</button></div></form></div><div id="zoom-scene"></div><script defer="defer" src="main.js?097d8b8eda8ecc97a023"></script><script>function validation(){
+      var un=document.getElementById('uname').value;
+      var ps=document.getElementById('pswd').value;
+      if (un == "Vishnu" && ps == "Vishnu"){
+          window.alert("Login Successful");e
+      }
+      else{
+          window.alert("Login Failed");
+      }
+  }</script><script defer="defer" src="main.js?434331e74021e0b545b7"></script></body></html>
+
+index.html:
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="Webpack Example Description"/>
+    <script src="./index.js"></script>
+  </head>
+    
+
+  <body>
+    <div id="wrapper" style="height: 120px">
+      <div class="panel"></div>
+      <div class="panel"></div>
+      <div class="panel"></div>
+      <h1> Login Form </h1>
+      <form>  
+          <div class="container">   
+              <label>Username : </label>   
+              <input type="text" id="uname" placeholder="Enter Username" name="username" required>  
+              <label>Password : </label>   
+              <input type="password" id="pswd" placeholder="Enter Password" name="password" required>
+              <button type="submit" onclick="validation()">Login</button>   
+           
+          </div>   
+      </form>    
+    </div>
+    <div id="zoom-scene"></div>
+    <script defer="defer" src="main.js?097d8b8eda8ecc97a023"></script>
+    <script>
+    function validation(){
+      var un=document.getElementById('uname').value;
+      var ps=document.getElementById('pswd').value;
+      if (un == "Vishnu" && ps == "Vishnu"){
+          window.alert("Login Successful");e
+      }
+      else{
+          window.alert("Login Failed");
+      }
+  }
+</script>
+  
+  </body>
+</html>
+
+
+				Exercise - 12
+App.js
+import React, {useState,useEffect} from "react";
+import "./App.css";
+
+function App(){
+  const [message,setMessage] = useState("");
+
+  useEffect(()=>{
+    fetch("http://localhost:8000/message")
+    .then((res)=>res.json())
+    .then((data)=> setMessage(data.message));
+  }, []);
+
+  return(
+    <div className="App">
+      <h1>{message}</h1>
+    </div>
+  )
+}
+
+export default App;
+
+Server.js
+const express = require("express");
+const cors = require("cors");
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.json());
+app.get("/message",(req,res)=>{
+    res.json({message:"Hello from server!"});
+});
+app.listen(8000,()=>{
+    console.log('Server is running on port 8000');
+});

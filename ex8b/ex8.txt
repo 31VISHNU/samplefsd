@@ -1,0 +1,111 @@
+EXERCISE-8
+-----------------------------------------------
+1)IMAGE SLIDER
+//npm i @mui/icons-material
+import React from "react";
+import { useState } from "react";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import "./App.css";
+import img1 from "./image1.jpg"
+import img2 from "./image2.jpg"
+import img3 from "./image3.jpg"
+import img4 from "./image4.jpg"
+import img5 from "./image5.jpg"
+function App() {
+  const Images =[    
+    {
+      url: img1
+    },
+    {
+      url: img2
+    },
+    {
+      url: img3
+    },
+    {
+      url: img4
+    },
+    {
+      url: img5
+    }                
+  ];
+  const [activeImage, setCurrent] = useState(0);
+  const length = Images.length;
+  const nextSlide = ()=>{
+    setCurrent(activeImage === length -1 ? 0: activeImage+1);
+  };
+  const prevSlide = ()=>{
+    setCurrent(activeImage === 0 ? length-1: activeImage-1);
+  };
+  if(!Array.isArray(Images)||Images.length <= 0)
+  {
+    return null;
+  }
+  return(
+    <div>
+      <h1 style={{textAlign:'center'}}>Image Slider</h1>
+       <section class = "imageslider">
+        <div class = "left">
+          <ArrowBackIosIcon onClick = {prevSlide}/>
+        </div>
+        <div class = "right">
+          <ArrowForwardIosIcon onClick = {nextSlide}/>
+        </div>
+        {
+          Images.map((currentSlide, ind)=>{
+            return(
+              <div className={ind === activeImage ? "currentSlide active":"CurrentSlide"}
+              key = {ind}>
+                 {ind === activeImage && <img src= {currentSlide.url} className="image" alt= "not loaded" />}
+              </div>
+            )
+          })
+        }     
+       </section>
+    </div>
+  )
+}
+
+export default App;
+-------------------------------------------------------------------------------------------
+2)Search
+import React, { useState } from "react";
+//import './App.css'
+const data = [
+  { id: 1, name: "Have a good day" },
+  { id: 2, name: "Peaceful life in Mepco" },
+  { id: 3, name: "Leo Movie" },
+  { id: 4, name: "My Hero is my Father" },
+  { id: 5, name: "Superstar" },
+  { id: 6, name: "Thalapathy" },
+  { id: 7, name: "Not focus on negativities"},
+  { id: 8, name: "Aim at your dreams" },
+  { id: 9, name: "Need more leave to enjoy" },
+  { id: 10, name: "My hometown is Sivakasi" }
+];
+
+const SearchFilter = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div class="input">
+      <input
+        type="text"
+        placeholder="Enter the intput"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      {filteredData.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  );
+};
+
+export default SearchFilter;
+-----------------------------------------------------------------------------
